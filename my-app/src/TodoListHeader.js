@@ -8,7 +8,7 @@ const TodoListHeader = ({
     const newFilter = !filterDone;
     setFilterDone(newFilter);
     const newURL = new URL(window.location);
-    if (!newFilter) {
+    if (newFilter) {
       newURL.searchParams.delete("withDone");
     } else {
       newURL.searchParams.set("withDone", "1");

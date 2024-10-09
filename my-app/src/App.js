@@ -35,7 +35,7 @@ export default function App() {
   const updateFilterDone = (newFilter) => {
     setFilterDone(newFilter);
     const newURL = new URL(window.location);
-    if (!newFilter) {
+    if (newFilter) {
       newURL.searchParams.delete("withDone");
     } else {
       newURL.searchParams.set("withDone", "1");
@@ -83,7 +83,7 @@ const Home = ({
   const withDone = queryParams.get("withDone");
 
   useEffect(() => {
-    setFilterDone(withDone === "1");
+    setFilterDone(withDone !== "1");
     // eslint-disable-next-line
   }, [withDone]);
 
