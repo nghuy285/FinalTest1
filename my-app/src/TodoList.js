@@ -8,7 +8,7 @@ const TodoList = ({ tasks, toggleTask, currentLanguage }) => {
           <div
             key={index}
             className="todo-item-container"
-            onClick={() => toggleTask(index)}
+            onClick={() => toggleTask(task.text)}
           >
             {task.done ? (
               <FaRegCheckCircle color="#9a9a9a" />

@@ -21,9 +21,9 @@ export default function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  const toggleTask = (index) => {
-    const updatedTasks = tasks.map((task, i) =>
-      i === index ? { ...task, done: !task.done } : task
+  const toggleTask = (taskName) => {
+    const updatedTasks = tasks.map((task) =>
+      task.text === taskName ? { ...task, done: !task.done } : task
     );
     setTasks(updatedTasks);
   };
