@@ -1,24 +1,33 @@
 import { FaRegCircle, FaRegCheckCircle } from "react-icons/fa";
 
-const TodoList = () => {
+const TodoList = ({ tasks, toggleTask, currentLanguage }) => {
   return (
     <div className="todo-list-container">
-      <div className="todo-item-container">
-        <FaRegCircle className="item-done-button" color="#9a9a9a" />
-        <div className="item-title">Build some websites</div>
-      </div>
-      <div className="todo-item-container">
-        <FaRegCircle className="item-done-button" color="#9a9a9a" />
-        <div className="item-title">Do excercises</div>
-      </div>
-      <div className="todo-item-container">
-        <FaRegCircle className="item-done-button" color="#9a9a9a" />
-        <div className="item-title">Go shopping</div>
-      </div>
-      <div className="todo-item-container done">
-        <FaRegCheckCircle color="#9a9a9a" className="item-done-button" />
-        <div className="item-title">House cleaning</div>
-      </div>
+      {tasks.length > 0 ? (
+        tasks.map((task, index) => (
+          <div
+            key={index}
+            className="todo-item-container"
+            onClick={() => toggleTask(index)}
+          >
+            {task.done ? (
+              <FaRegCheckCircle color="#9a9a9a" />
+            ) : (
+              <FaRegCircle color="#9a9a9a" />
+            )}
+            <div className="item-title">
+              {task.text} - {currentLanguage === "en" ? "Due" : "Hạn cuối"}:{" "}
+              {task.dueDate}
+            </div>
+          </div>
+        ))
+      ) : (
+        <div>
+          {currentLanguage === "en"
+            ? "No tasks available"
+            : "Không có nhiệm vụ nào"}
+        </div>
+      )}
     </div>
   );
 };
